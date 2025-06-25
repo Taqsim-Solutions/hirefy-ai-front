@@ -1,52 +1,27 @@
-# Compiled Output
-dist
-tmp
-/out-tsc
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Project Dependencies
 node_modules
+dist
+dist-ssr
+*.local
 
-# IDEs and Editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+.env*.local
+.env
 
-# IDE - VSCode
-.vs/*
+# Editor directories and files
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
 !.vscode/extensions.json
-
-# Miscellaneous
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
-
-# System Files
+.idea
 .DS_Store
-Thumbs.db
-
-# Generated Files
-.nx
-.swc
-fly.toml
-stats.html
-
-# Environment Variables
-*.env*
-!.env.example
-
-# Lingui Compiled Messages
-apps/client/src/locales/_build/
-apps/client/src/locales/*/messages.*js
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

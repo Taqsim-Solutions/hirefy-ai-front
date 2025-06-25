@@ -1,6 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class",
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './app/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
+  ],
+  prefix: "",
   theme: {
     container: {
       center: true,
@@ -11,42 +18,44 @@ module.exports = {
     },
     extend: {
       colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        border: "hsl(var(--border))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          accent: "hsl(var(--primary-accent))",
+          DEFAULT: "#9f5bff",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
-          accent: "hsl(var(--secondary-accent))",
           foreground: "hsl(var(--secondary-foreground))",
         },
-        error: {
-          DEFAULT: "hsl(var(--error))",
-          accent: "hsl(var(--error-accent))",
-          foreground: "hsl(var(--error-foreground))",
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
-        info: {
-          DEFAULT: "hsl(var(--info))",
-          accent: "hsl(var(--info-accent))",
-          foreground: "hsl(var(--info-foreground))",
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
-        success: {
-          DEFAULT: "hsl(var(--success))",
-          accent: "hsl(var(--success-accent))",
-          foreground: "hsl(var(--success-foreground))",
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
-        warning: {
-          DEFAULT: "hsl(var(--warning))",
-          accent: "hsl(var(--warning-accent))",
-          foreground: "hsl(var(--warning-foreground))",
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
       },
-      fontFamily: {
-        sans: ["IBM Plex Sans", "sans-serif"],
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
         "accordion-down": {
@@ -64,10 +73,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/forms"),
-    require("tailwindcss-animate"),
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/container-queries"),
-  ],
-};
+  plugins: [require("tailwindcss-animate")],
+}
