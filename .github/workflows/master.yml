@@ -1,0 +1,63 @@
+name: Dockerize and Deploy merchant-marketplace-front  
+
+on:
+  push:
+    branches:
+      - 'front'
+      - 'master'
+env:
+  IMAGE_TAG: ${{ github.ref_name == 'master' && 'latest' || 'latest' }} 
+  VITE_BASE_URL: ${{ github.ref_name == 'master' && 'https://hireliy.uz/api/' }}     
+  CONTAINER_NAME: ${{ github.ref_name == 'master' && 'hirefy-front' || 'hirefy-front'}}
+  HOST: ${{ github.ref_name == 'master' && secrets.DEV_SSH_HOST || secrets.MAIN_SSH_HOST }}
+  USER: ${{ github.ref_name == 'master' && secrets.DEV_SSH_USER || secrets.MAIN_SSH_USER }}
+  PORT: ${{ github.ref_name == 'master' && secrets.DEV_SSH_PORT || secrets.MAIN_SSH_PORT }}
+  KEY: ${{ github.ref_name == 'master' && secrets.DEV_SSH_PRIVATE_KEY || secrets.MAIN_SSH_PRIVATE_KEY }}
+  PASSWORD: ${{ github.ref_name == 'master' && secrets.DEV_SSH_PASSWORD || secrets.MAIN_SSH_PASSWORD }}
+
+jobs:
+  dockerize:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2.1.0
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2.5.0
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v2.1.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      -
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: taqsim/${{env.CONTAINER_NAME}}:${{ env.IMAGE_TAG }}
+          no-cache: true
+          build-args: |
+            VITE_BASE_URL=${{ env.VITE_BASE_URL }}
+           # VITE_PUBLIC_SITENAME=${{ env.VITE_PUBLIC_SITENAME }}
+  deploy:
+    runs-on: ubuntu-latest    
+    needs: dockerize
+
+    steps:
+      - name: executing remote ssh commands using keys
+        id: deploy
+        uses: appleboy/ssh-action@master
+        with:
+          command_timeout: 40m
+          host: ${{ env.HOST }}
+          username: ${{ env.USER }}
+          password: ${{ env.PASSWORD }}
+          port: ${{ env.PORT }}
+          script: |
+            # echo "Copying settings to server..."
+            cd ~
+            docker pull taqsim/${{env.CONTAINER_NAME}}:${{ env.IMAGE_TAG }} && docker rm -f ${{env.CONTAINER_NAME}} && docker-compose up -d ${{env.CONTAINER_NAME}}
+            
