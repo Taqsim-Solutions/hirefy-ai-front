@@ -8,6 +8,14 @@ export const createResume = (data) => {
   return request({ method: "POST", url: "/resumes", data });
 };
 
+export const editResume = (data, id) => {
+  return request({ method: "PUT", url: `/resumes/${id}`, data });
+};
+
+export const getResumeById = (id) => {
+  return request({ method: "GET", url: `/resumes/${id}` });
+};
+
 export const getResumes = () => {
   return request({ method: "GET", url: "/resumes" });
 };

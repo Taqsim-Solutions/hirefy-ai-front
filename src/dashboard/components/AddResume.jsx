@@ -19,17 +19,26 @@ function AddResume() {
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
   const navigation = useNavigate();
+
   const onCreate = async () => {
     setLoading(true);
+
     const data = {
       name: resumeTitle,
       email: user?.primaryEmailAddress?.emailAddress,
-      templateId: 3,
+      templateId: 13,
+      firstName: "",
+      lastName: "",
+      jobTitle: "",
+      address: "",
+      phone: "",
+      skills: [],
+      educations: [],
+      experiences: [],
     };
 
     createResume(data)
       .then((resp) => {
-        console.log(resp.data.data.documentId);
         if (resp) {
           setLoading(false);
           navigation("/dashboard/resume/" + resp.data.data.id + "/edit");
@@ -55,7 +64,9 @@ function AddResume() {
       <Dialog open={openDialog}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Create New Resume</DialogTitle>
+            <DialogTitle className="mb-4 text-xl text-center -mt-2">
+              Create New Resume
+            </DialogTitle>
             <DialogDescription>
               <p>Add a title for your new resume</p>
               <Input

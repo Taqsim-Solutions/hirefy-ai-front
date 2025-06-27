@@ -9,7 +9,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 
 // Use the highest-quality model available
 const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-pro",
+  model: "gemini-2.5-flash",
 });
 
 // Generation configuration
@@ -36,6 +36,6 @@ export const AIClient = {
       generationConfig,
     });
 
-    return result.response.text();
+    return result;
   },
 };
