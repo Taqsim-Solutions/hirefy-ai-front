@@ -7,7 +7,9 @@ on:
       - 'master'
 env:
   IMAGE_TAG: ${{ github.ref_name == 'master' && 'latest' || 'latest' }} 
-  VITE_GOOGLE_AI_API_KEY: ${{ github.ref_name == 'master' && 'AIzaSyC8U61Lzn5V6zi2cqcQ5KzpvCoHlGJZHzc' }}     
+  VITE_GOOGLE_AI_API_KEY: ${{ github.ref_name == 'master' && secrets.VITE_GOOGLE_AI_API_KEY }}  
+  VITE_CLERK_PUBLISHABLE_KEY: ${{ github.ref_name == 'master' && secrets.VITE_CLERK_PUBLISHABLE_KEY}}
+  VITE_API_BASE_URL: ${{ github.ref_name == 'master' && secrets.VITE_API_BASE_URL}}
   CONTAINER_NAME: ${{ github.ref_name == 'master' && 'hirefy-front' || 'hirefy-front'}}
   HOST: ${{ github.ref_name == 'master' && secrets.DEV_SSH_HOST || secrets.MAIN_SSH_HOST }}
   USER: ${{ github.ref_name == 'master' && secrets.DEV_SSH_USER || secrets.MAIN_SSH_USER }}
@@ -41,7 +43,8 @@ jobs:
           no-cache: true
           build-args: |
             VITE_GOOGLE_AI_API_KEY=${{ env.VITE_GOOGLE_AI_API_KEY }}
-           # VITE_PUBLIC_SITENAME=${{ env.VITE_PUBLIC_SITENAME }}
+            VITE_CLERK_PUBLISHABLE_KEY=${{ env.VITE_CLERK_PUBLISHABLE_KEY }}
+            VITE_API_BASE_URL=${{ env.VITE_API_BASE_URL }}
   deploy:
     runs-on: ubuntu-latest    
     needs: dockerize
