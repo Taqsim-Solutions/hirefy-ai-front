@@ -41,21 +41,21 @@ Return plain text only.
     }
   };
 
-  const handleSave = async (e) => {
+  const handleSave = (e) => {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      await editResume({ ...resumeInfo, skills }, resumeId);
-      setResumeInfo({ ...resumeInfo, skills });
-      toast.success("Skills saved successfully!");
-      enabledNext(true);
-    } catch (error) {
-      console.error("Save error:", error);
-      toast.error("❌ Failed to save skills.");
-    } finally {
-      setLoading(false);
-    }
+    editResume({ ...resumeInfo, skills }, resumeId)
+      .then(() => {
+        toast.success("Skills saved successfully!");
+        enabledNext(true);
+      })
+      .catch((err) => {
+        toast.error("❌ Failed to save skills.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   useEffect(() => {

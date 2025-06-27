@@ -11,7 +11,7 @@ function ResumePreview() {
 
   return (
     <div
-      className="shadow-lg h-full p-14 border-t-[20px] resume"
+      className="h-full p-14 border-t-[20px] resume max-w-[1000px] m-auto"
       style={{
         borderColor: resumeInfo?.themeColor,
       }}

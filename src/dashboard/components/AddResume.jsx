@@ -26,7 +26,7 @@ function AddResume() {
     const data = {
       name: resumeTitle,
       email: user?.primaryEmailAddress?.emailAddress,
-      templateId: 14,
+      templateId: 1,
       firstName: "",
       lastName: "",
       jobTitle: "",

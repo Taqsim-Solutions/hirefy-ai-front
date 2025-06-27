@@ -46,14 +46,6 @@ function PersonalDetail({ enabledNext }) {
       });
   };
 
-  const handleUseClerkPhoto = () => {
-    if (user?.imageUrl) {
-      const updated = { ...formData, profileImage: user.imageUrl };
-      setFormData(updated);
-      setResumeInfo({ ...resumeInfo, ...updated });
-    }
-  };
-
   const fields = [
     { name: "firstName", label: "First Name", colSpan: 1 },
     { name: "lastName", label: "Last Name", colSpan: 1 },
@@ -95,18 +87,7 @@ function PersonalDetail({ enabledNext }) {
           </div>
 
           <div>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleUseClerkPhoto}
-              className="text-primary"
-              size="sm"
-            >
-              <UserRound className="w-4 h-4 mr-1" />
-              Use Profile Photo for resume
-            </Button>
-
-            <div className="flex items-center mt-5 gap-2.5">
+            <div className="flex items-center -mt-2 gap-2.5">
               <UserButton
                 afterSignOutUrl="/"
                 appearance={{
@@ -115,9 +96,7 @@ function PersonalDetail({ enabledNext }) {
                   },
                 }}
               />
-              <p className="text-sm">
-                Click avatar for uploading profile image
-              </p>
+              <p className="text-sm">Click avatar for changing profile image</p>
             </div>
           </div>
         </div>

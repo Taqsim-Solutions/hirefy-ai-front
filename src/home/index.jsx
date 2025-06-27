@@ -34,17 +34,21 @@ function Home() {
               </svg>
             </a>
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-              Build Your Resume <span className="text-primary">With AI</span>{" "}
+              AI-Powered Hiring. <br />
+              Fast. Fair. <span className="text-primary">
+                Future-Ready.
+              </span>{" "}
             </h1>
             <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-              Effortlessly Craft a Standout Resume with Our AI-Powered Builder
+              Hireliy AI is an AI-powered recruitment automation platform that
+              helps companies hire top talent faster and more efficiently.
             </p>
             <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
               <a
                 href="/dashboard"
                 className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-primary focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
               >
-                Get Started
+                Try Free Demo
                 <svg
                   className="ml-2 -mr-1 w-5 h-5"
                   fill="currentColor"
@@ -183,7 +187,7 @@ function Home() {
           </div>
         </section>
         <section className="py-8 bg-white z-50 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-          <h2 className="font-bold text-3xl">Create. Customize. Share.</h2>
+          <h2 className="font-bold text-3xl">Empowering Job Seekers</h2>
 
           <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <a
@@ -192,16 +196,28 @@ function Home() {
          hover:border-pink-500/10 hover:shadow-pink-500/10"
               href="#"
             >
-              <AtomIcon className="h-8 w-8 m-auto" />
+              <svg
+                className="w-16 h-16 m-auto"
+                fill="none"
+                stroke="#80cfff"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
 
               <h2 className="mt-4 text-xl font-bold text-black">
-                Write Your Resume Effortlessly
+                AI Resume Builder
               </h2>
 
               <p className="mt-1 text-sm text-gray-600">
-                Kickstart your resume with ease using our smart, AI-assisted
-                form. Just fill in your details — we’ll handle the formatting
-                and structure.
+                Create a professional, ATS-friendly resume in minutes with our
+                AI-powered builder.
               </p>
             </a>
 
@@ -212,12 +228,12 @@ function Home() {
               <Edit className="h-8 w-8 m-auto" />
 
               <h2 className="mt-4 text-xl font-bold text-black">
-                Customize to Perfection
+                Resume Improvement
               </h2>
 
               <p className="mt-1 text-sm text-gray-600">
-                Edit, tweak, and tailor your resume to reflect your unique
-                strengths. Make changes instantly with real-time AI suggestions.
+                Get AI-driven suggestions to optimize your resume and highlight
+                your strengths.
               </p>
             </a>
 
@@ -228,12 +244,12 @@ function Home() {
               <Share2 className="h-8 w-8 m-auto" />
 
               <h2 className="mt-4 text-xl font-bold text-black">
-                Share & Get Noticed
+                Job Matching Portal
               </h2>
 
               <p className="mt-1 text-sm text-gray-600">
-                Export your resume or share it online. Start collecting job
-                opportunities with a resume that truly stands out.
+                Discover relevant job opportunities tailored to your skills and
+                preferences.
               </p>
             </a>
           </div>

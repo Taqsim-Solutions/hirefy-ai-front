@@ -20,7 +20,7 @@ function PersonalDetailPreview({ resumeInfo }) {
           className="w-20 h-20 rounded-full object-cover"
         />
       )}
-      <div className={`${hasImage ? "text-left" : "text-center"} w-full`}>
+      <div className={`text-center w-full`}>
         <h2
           className="font-bold text-xl"
           style={{
@@ -30,21 +30,16 @@ function PersonalDetailPreview({ resumeInfo }) {
           {resumeInfo?.firstName} {resumeInfo?.lastName}
         </h2>
         <h2 className="text-sm font-medium">{resumeInfo?.jobTitle}</h2>
-        <h2
-          className="font-normal text-xs"
-          style={{
-            color: resumeInfo?.themeColor,
-          }}
-        >
-          {resumeInfo?.address}
-        </h2>
 
-        <div className="flex justify-between text-xs font-normal mt-1">
+        <div className="flex gap-2 text-xs font-normal mt-1 justify-center">
           <span style={{ color: resumeInfo?.themeColor }}>
-            {resumeInfo?.phone}
+            {resumeInfo?.phone},{" "}
           </span>
           <span style={{ color: resumeInfo?.themeColor }}>
-            {resumeInfo?.email}
+            {resumeInfo?.email},{" "}
+          </span>
+          <span style={{ color: resumeInfo?.themeColor }}>
+            {resumeInfo?.address}
           </span>
         </div>
 

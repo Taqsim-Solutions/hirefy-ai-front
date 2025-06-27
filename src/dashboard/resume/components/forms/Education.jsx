@@ -47,23 +47,21 @@ function Education({ enabledNext }) {
     setEducationalList((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleSave = async (e) => {
+  const handleSave = (e) => {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      await editResume(
-        { ...resumeInfo, educations: educationalList },
-        resumeId
-      );
-      toast.success("Details saved successfully!");
-      enabledNext(true);
-    } catch (err) {
-      console.error("Failed to update resume:", err);
-      toast.error("Failed to save education details.");
-    } finally {
-      setLoading(false);
-    }
+    editResume({ ...resumeInfo, educations: educationalList }, resumeId)
+      .then(() => {
+        toast.success("Details saved successfully!");
+        enabledNext(true);
+      })
+      .catch((err) => {
+        console.error("Failed to update resume:", err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
