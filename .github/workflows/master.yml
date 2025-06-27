@@ -7,7 +7,7 @@ on:
       - 'master'
 env:
   IMAGE_TAG: ${{ github.ref_name == 'master' && 'latest' || 'latest' }} 
-  VITE_BASE_URL: ${{ github.ref_name == 'master' && 'https://hireliy.uz/api/' }}     
+  VITE_GOOGLE_AI_API_KEY: ${{ github.ref_name == 'master' && 'AIzaSyC8U61Lzn5V6zi2cqcQ5KzpvCoHlGJZHzc' }}     
   CONTAINER_NAME: ${{ github.ref_name == 'master' && 'hirefy-front' || 'hirefy-front'}}
   HOST: ${{ github.ref_name == 'master' && secrets.DEV_SSH_HOST || secrets.MAIN_SSH_HOST }}
   USER: ${{ github.ref_name == 'master' && secrets.DEV_SSH_USER || secrets.MAIN_SSH_USER }}
@@ -40,7 +40,7 @@ jobs:
           tags: taqsim/${{env.CONTAINER_NAME}}:${{ env.IMAGE_TAG }}
           no-cache: true
           build-args: |
-            VITE_BASE_URL=${{ env.VITE_BASE_URL }}
+            VITE_GOOGLE_AI_API_KEY=${{ env.VITE_GOOGLE_AI_API_KEY }}
            # VITE_PUBLIC_SITENAME=${{ env.VITE_PUBLIC_SITENAME }}
   deploy:
     runs-on: ubuntu-latest    
