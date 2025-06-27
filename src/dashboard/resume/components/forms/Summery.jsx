@@ -30,11 +30,8 @@ function Summary({ enabledNext }) {
     setLoading(true);
     try {
       const result = await AIClient.generate(prompt);
-      console.log("RESULT");
-      const text = await result.response.text();
-      const parsed = JSON.parse(text);
-      console.log(result);
-      setAiSuggestions(parsed);
+      const resultValue = result?.candidates?.[0]?.content.parts?.[0].text;
+      setSummary(resultValue);
     } catch (error) {
       console.error("AI generation error:", error);
       toast.error("Failed to generate summary suggestions.");
@@ -50,9 +47,7 @@ function Summary({ enabledNext }) {
     try {
       await editResume({ ...resumeInfo, summary }, resumeId);
       setResumeInfo({ ...resumeInfo, summary });
-      toast.success("✅ Summary saved successfully!", {
-        description: "This will be shown at the top of your resume.",
-      });
+      toast.success("Summary saved successfully!");
       enabledNext(true);
     } catch (error) {
       console.error("Save error:", error);
@@ -84,7 +79,7 @@ function Summary({ enabledNext }) {
           </div>
 
           <Textarea
-            className="mt-5"
+            className="mt-5 h-[160px]"
             required
             value={summary}
             onChange={(e) => setSummary(e.target.value)}

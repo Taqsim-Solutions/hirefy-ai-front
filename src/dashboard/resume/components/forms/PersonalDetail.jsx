@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
-import { LoaderCircle } from "lucide-react";
+import { LoaderCircle, UserRound } from "lucide-react";
+import { UserButton, useUser } from "@clerk/clerk-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,16 +12,17 @@ import { editResume } from "@/api";
 function PersonalDetail({ enabledNext }) {
   const params = useParams();
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+  const { user } = useUser();
+
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     enabledNext(false);
-
     const updated = { ...formData, [name]: value };
     setFormData(updated);
-    setResumeInfo(updated);
+    setResumeInfo({ ...resumeInfo, ...updated });
   };
 
   useEffect(() => {
@@ -42,6 +44,14 @@ function PersonalDetail({ enabledNext }) {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const handleUseClerkPhoto = () => {
+    if (user?.imageUrl) {
+      const updated = { ...formData, profileImage: user.imageUrl };
+      setFormData(updated);
+      setResumeInfo({ ...resumeInfo, ...updated });
+    }
   };
 
   const fields = [
@@ -71,7 +81,47 @@ function PersonalDetail({ enabledNext }) {
               />
             </div>
           ))}
+
+          {/* Profile Image Preview */}
+          <div className="col-span-2 mt-4">
+            <label className="text-sm mb-2 block">Profile Image</label>
+            {formData?.profileImage && (
+              <img
+                src={formData.profileImage}
+                alt="Profile"
+                className="w-20 h-20 rounded-full object-cover border"
+              />
+            )}
+          </div>
+
+          <div>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleUseClerkPhoto}
+              className="text-primary"
+              size="sm"
+            >
+              <UserRound className="w-4 h-4 mr-1" />
+              Use Profile Photo for resume
+            </Button>
+
+            <div className="flex items-center mt-5 gap-2.5">
+              <UserButton
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: "w-7 h-7 ring-2 ring-primary", // Tailwind classes
+                  },
+                }}
+              />
+              <p className="text-sm">
+                Click avatar for uploading profile image
+              </p>
+            </div>
+          </div>
         </div>
+
         <div className="mt-6 flex justify-end">
           <Button type="submit" disabled={loading}>
             {loading ? <LoaderCircle className="animate-spin" /> : "Save"}

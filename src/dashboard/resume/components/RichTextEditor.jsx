@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import { Button } from "@/components/ui/button";
 import { Brain, LoaderCircle } from "lucide-react";
@@ -29,20 +29,31 @@ function RichTextEditor({ onRichTextEditorChange, index, defaultValue }) {
   const [tone, setTone] = useState("professional");
 
   const handleGenerateFromAI = async () => {
-    const title = resumeInfo?.Experience?.[index]?.title;
+    const title = resumeInfo?.experiences?.[index]?.jobTitle;
 
     if (!title) {
       toast("⚠️ Please add a Position Title before generating.");
       return;
     }
-
     setLoading(true);
     try {
-      const prompt = buildExperiencePrompt(title, { language, tone });
-      const result = await AIClient.generate(prompt);
+      const result =
+        await AIClient.generate(`Write a concise 2–3 sentence with resume summary for a ${title}.
+  Avoid using "I", personal opinions, or years of experience. Write 3–5 professional resume bullet points for a person's work experience.
+Each point should:
 
-      setValue(result);
-      onRichTextEditorChange({ target: { value: result } });
+Begin with a strong action verb (e.g., Coordinated, Facilitated, Organized, Delivered, Supported)
+
+Emphasize real responsibilities, improvements, or outcomes in the role
+
+Highlight interpersonal, organizational, or operational skills
+
+Include specific results, scale, or impact if possible (e.g., “served 300+ clients”, “reduced wait times by 20%”)
+
+Avoid technical jargon or software developer language You can set styled with html tags like ul, bold, i...`);
+      const resultValue = result?.candidates?.[0]?.content.parts?.[0].text;
+      setValue(resultValue);
+      onRichTextEditorChange({ target: { value: resultValue } });
     } catch (err) {
       console.error("AI error:", err);
       toast("❌ Failed to generate content from AI.");
@@ -54,17 +65,10 @@ function RichTextEditor({ onRichTextEditorChange, index, defaultValue }) {
   return (
     <div>
       <div className="mb-2">
-        <label className="text-xs text-gray-600">Summary</label>
+        <label className="text-sm">Summary</label>
       </div>
 
-      <LanguageToneSelector
-        language={language}
-        tone={tone}
-        setLanguage={setLanguage}
-        setTone={setTone}
-      />
-
-      <div className="flex justify-between mb-2">
+      <div className="flex justify-between mb-4">
         <Button
           variant="outline"
           size="sm"

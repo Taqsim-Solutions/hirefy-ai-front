@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AddResume from "./components/AddResume";
 import ResumeCardItem from "./components/ResumeCardItem";
-import { getResumes } from "@/api";
+import { createTemplate, getResumes } from "@/api";
 
 function Dashboard() {
   const [resumeList, setResumeList] = useState([]);
@@ -16,6 +16,10 @@ function Dashboard() {
 
   useEffect(() => {
     fetchResumes();
+  }, []);
+
+  useEffect(() => {
+    createTemplate({ name: "1", description: "1" });
   }, []);
 
   return (

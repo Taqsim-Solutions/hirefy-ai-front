@@ -53,7 +53,7 @@ function FormSection() {
       ) : activeFormIndex == 2 ? (
         <Summery enabledNext={(v) => setEnableNext(v)} />
       ) : activeFormIndex == 3 ? (
-        <Experience />
+        <Experience enabledNext={(v) => setEnableNext(v)} />
       ) : activeFormIndex == 4 ? (
         <Education />
       ) : activeFormIndex == 5 ? (

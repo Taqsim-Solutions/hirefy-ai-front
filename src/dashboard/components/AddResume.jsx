@@ -1,5 +1,5 @@
 import { Loader2, PlusSquare } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -26,13 +26,13 @@ function AddResume() {
     const data = {
       name: resumeTitle,
       email: user?.primaryEmailAddress?.emailAddress,
-      templateId: 13,
+      templateId: 14,
       firstName: "",
       lastName: "",
       jobTitle: "",
       address: "",
       phone: "",
-      skills: [],
+      skills: "",
       educations: [],
       experiences: [],
     };
