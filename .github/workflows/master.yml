@@ -58,6 +58,6 @@ jobs:
           port: ${{ env.PORT }}
           script: |
             # echo "Copying settings to server..."
-            cd ~
+            cd ~/fond
             docker pull taqsim/${{env.CONTAINER_NAME}}:${{ env.IMAGE_TAG }} && docker rm -f ${{env.CONTAINER_NAME}} && docker-compose up -d ${{env.CONTAINER_NAME}}
             
