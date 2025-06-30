@@ -190,11 +190,10 @@ function Home() {
           <h2 className="font-bold text-3xl">Empowering Job Seekers</h2>
 
           <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <a
+            <div
               className="block rounded-xl border bg-white
          border-gray-200 p-8 shadow-xl transition
          hover:border-pink-500/10 hover:shadow-pink-500/10"
-              href="#"
             >
               <svg
                 className="w-16 h-16 m-auto"
@@ -219,13 +218,24 @@ function Home() {
                 Create a professional, ATS-friendly resume in minutes with our
                 AI-powered builder.
               </p>
-            </a>
+            </div>
 
-            <a
-              className="block rounded-xl border bg-white border-gray-200 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
-              href="#"
-            >
-              <Edit className="h-8 w-8 m-auto" />
+            <div className="block rounded-xl border bg-white border-gray-200 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
+              <svg
+                className="w-16 h-16 m-auto"
+                fill="none"
+                stroke="#80cfff"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.05 4.275c.495-.264 1.04-.425 1.625-.55C12.875 3.5 14.25 2.25 16.5 2.25c2.25 0 3.75 1.25 4.5 3.5h.5c.414 0 .75.336.75.75v9.5c0 .414-.336.75-.75.75h-.5c-.75 2.25-2.25 3.5-4.5 3.5c-2.25 0-3.583-1.25-4.375-3.5c-.414-.075-.85-.125-1.375-.125c-2.484 0-4.5 2.016-4.5 4.5s2.016 4.5 4.5 4.5s4.5-2.016 4.5-4.5c0-1.757-.996-3.277-2.486-4.004M10.05 4.275c-.495.264-1.04.425-1.625.55C7.225 5 5.85 6.25 3.6 6.25c-2.25 0-3.75-1.25-4.5-3.5H-.5c-.414 0-.75-.336-.75-.75v-9.5c0-.414.336-.75.75-.75H-.5c.75-2.25 2.25-3.5 4.5-3.5c2.25 0 3.583 1.25 4.375 3.5c.414.075.85.125 1.375.125c2.484 0 4.5-2.016 4.5-4.5S13.484.25 11.000000000000002.25S6.516-2.234 6.516.25c0 1.757.996 3.277 2.486 4.004Z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  transform="translate(3.75 2.5)"
+                ></path>
+              </svg>
 
               <h2 className="mt-4 text-xl font-bold text-black">
                 Resume Improvement
@@ -235,13 +245,23 @@ function Home() {
                 Get AI-driven suggestions to optimize your resume and highlight
                 your strengths.
               </p>
-            </a>
+            </div>
 
-            <a
-              className="block rounded-xl border bg-white border-gray-200 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
-              href="#"
-            >
-              <Share2 className="h-8 w-8 m-auto" />
+            <div className="block rounded-xl border bg-white border-gray-200 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
+              <svg
+                className="w-16 h-16 m-auto"
+                fill="none"
+                stroke="#80cfff"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+              </svg>
 
               <h2 className="mt-4 text-xl font-bold text-black">
                 Job Matching Portal
@@ -251,7 +271,59 @@ function Home() {
                 Discover relevant job opportunities tailored to your skills and
                 preferences.
               </p>
-            </a>
+            </div>
+
+            <div className="block rounded-xl border bg-white border-gray-200 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
+              <svg
+                className="w-16 h-16 m-auto"
+                fill="none"
+                stroke="#80cfff"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+              </svg>
+
+              <h2 className="mt-4 text-xl font-bold text-black">
+                Interview Simulator
+              </h2>
+
+              <p className="mt-1 text-sm text-gray-600">
+                Practice common interview questions and receive AI feedback to
+                boost your confidence.
+              </p>
+            </div>
+
+            <div className="block rounded-xl border bg-white border-gray-200 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
+              <svg
+                className="w-16 h-16 m-auto"
+                fill="none"
+                stroke="#80cfff"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375m0 0h3.75M10.125 2.25V4.5m0 0H6.375m3.75 0H13.5m0 0V2.25m0 0h3.75m0 0h.375m0 0V4.5m0 0H13.5m0 0H10.125m2.25-2.25h-1.5m1.5 0h1.5M6 12h12M6 12v6m12-6v6M6 12H4.5m1.5 0H6m0 0H7.5m7.5 0H18m1.5 0H16.5m0 0h-1.5m-9 3H15m-6-3h6m0 0H9.75M12 15h3M9 15h1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+
+              <h2 className="mt-4 text-xl font-bold text-black">
+                Application Tracker
+              </h2>
+
+              <p className="mt-1 text-sm text-gray-600">
+                Keep track of all your job applications in one place and manage
+                your progress.
+              </p>
+            </div>
           </div>
         </section>
       </div>
